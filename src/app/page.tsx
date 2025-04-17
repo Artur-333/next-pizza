@@ -1,12 +1,13 @@
 import { Header } from "@/components/header";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { TopBar } from "@/components/top-bar";
 
 export default function Home() {
   return (
-    
+    <>
       <Header />
-   
+      <TopBar />
+
+    </>
 
   );
 }
