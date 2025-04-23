@@ -1,7 +1,8 @@
+"use client"
 import React from "react";
-import { Logo,Search } from "@/components";
+import { Logo, Search } from "@/components";
 import { ArrowRight, ShoppingCart, User } from "lucide-react";
-import { Button ,Container} from "@/components/ui";
+import { Button, Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -11,10 +12,10 @@ interface Props {
 export const Header: React.FC<Props> = (props) => {
   const { className } = props;
   return (
-    <header className={cn("py-2",className)}>
+    <header className={cn("py-2", className)}>
       <Container className="flex  gap-5 items-center justify-between">
         <Logo />
-        <Search className="flex-1" />
+        <Search className="flex-1" onChange={() => { } } value={""} />
         <div className="flex items-center gap-4">
           <Button variant="outline">
             <User />
