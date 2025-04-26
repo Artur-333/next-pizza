@@ -5,3 +5,7 @@ export { Logo } from "./logo";
 export { Search } from "./search";
 export { Filters } from "./filters";
 export {FilterCheckbox} from './filter-checkbox';
+export {PriceSlider} from './price-slider';
+export {Ingredients} from './ingredients';
+export {Card} from './card';
+export {Catalog} from './catalog';
