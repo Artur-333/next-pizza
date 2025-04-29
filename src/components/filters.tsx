@@ -4,6 +4,7 @@ import { Input, Title } from "./ui";
 import { FilterCheckbox } from "./filter-checkbox";
 import { Ingredients } from "./ingredients";
 import { PriceSlider } from "./price-slider";
+import { cn } from "@/lib/utils";
 
 interface Props {
   className?: string;
@@ -42,7 +43,7 @@ const ingredients = [
 export const Filters: React.FC<Props> = (props) => {
   const { className } = props;
   return (
-    <div className={className}>
+    <div className={cn("",className)}>
       <Title className="mb-5" size={"l"} text={"Фильтрация"} />
       <div className="flex flex-col gap-2 ">
         <FilterCheckbox

@@ -13,91 +13,96 @@ export default function Home() {
         <Filters className="max-w-[200px]" />
         <div className="grid gap-10">
 
-          <Catalog title={"Pizza"} items={[{
-            id: 1,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 2,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 3,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 4,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 5,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 6,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },]} />
+          <Catalog
+            categoryId={1}
+            title={"Пицца"} items={[{
+              id: 1,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 2,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 3,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 4,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 5,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 6,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },]} />
 
-          <Catalog title={"napitki"} items={[{
-            id: 1,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 2,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 3,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 4,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 5,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },
-          {
-            id: 6,
-            title: "Пицца с томатами",
-            ingredients: "Моцарелла, томаты",
-            items: [{ price: 500 }],
-            imgUrl: "/image.png",
-          },]} />
+          <Catalog
+            categoryId={2}
+
+            title={"Мясные"} items={[{
+              id: 1,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 2,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 3,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 4,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 5,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },
+            {
+              id: 6,
+              title: "Пицца с томатами",
+              ingredients: "Моцарелла, томаты",
+              items: [{ price: 500 }],
+              imgUrl: "/image.png",
+            },]} />
         </div>
       </Container>
     </>
