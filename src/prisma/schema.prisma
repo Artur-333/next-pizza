@@ -8,23 +8,32 @@ datasource db {
 }
 
 model User {
-    id       Int    @id @default(autoincrement())
-    email    String @unique
+    id Int @id @default(autoincrement())
+
+    email    String   @unique
     fullName String
     password String
+    verifiet DateTime
 
-    role UserRole @default(USER)
-    cart Cart?
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    role             UserRole          @default(USER)
+    cart             Cart?
+    verificationCode VerificationCode?
+    orders           Order[]
+    createdAt        DateTime          @default(now())
+    updatedAt        DateTime          @updatedAt
 }
 
 model Cart {
     id Int @id @default(autoincrement())
 
-    user      User     @relation(fields: [userId], references: [id])
-    userId    Int      @unique
+    token       String
+    totalAmount Int    @default(0)
+
+    user   User @relation(fields: [userId], references: [id])
+    userId Int  @unique
+
+    products CartProduct[]
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -32,24 +41,38 @@ model Cart {
 model Product {
     id Int @id @default(autoincrement())
 
+    name   String
+    imgUrl String
+
     category   Category @relation(fields: [categoryId], references: [id])
     categoryId Int
 
     ingridient Ingridient[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    variations Variation[]
+    createdAt  DateTime     @default(now())
+    updatedAt  DateTime     @updatedAt
 }
 
 model CartProduct {
     id Int @id @default(autoincrement())
 
+    quantity Int
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    variation   Variation    @relation(fields: [variationId], references: [id])
+    variationId Int
+    ingridients Ingridient[]
+
+    cart   Cart @relation(fields: [cartId], references: [id])
+    cartId Int
 }
 
 model Category {
     id Int @id @default(autoincrement())
+
+    name String
 
     product Product[]
 
@@ -58,8 +81,14 @@ model Category {
 }
 
 model Ingridient {
-    id      Int       @id @default(autoincrement())
-    product Product[]
+    id Int @id @default(autoincrement())
+
+    name   String
+    price  Int
+    imgUrl String
+
+    product     Product[]
+    cartProduct CartProduct[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -68,24 +97,49 @@ model Ingridient {
 model Variation {
     id Int @id @default(autoincrement())
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    price     Int
+    pizzaType Int?
+    size      Int?
+
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+    cartProducts CartProduct[]
+
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
 }
 
 model Order {
     id Int @id @default(autoincrement())
 
+    fullName  String
+    address   String
+    email     String
+    phone     String
+    comment   String?
+    paymentId Int
+    products  Json
+    token     String
+
     status OrderStatus
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    User      User     @relation(fields: [userId], references: [id])
+    userId    Int
 }
 
 model VerificationCode {
     id Int @id @default(autoincrement())
 
+    code String @unique
+
+    user   User @relation(fields: [userId], references: [id])
+    userId Int  @unique
+
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+
+    @@unique([code, userId])
 }
 
 enum UserRole {
