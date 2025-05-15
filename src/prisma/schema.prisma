@@ -13,7 +13,7 @@ model User {
     email    String   @unique
     fullName String
     password String
-    verifiet DateTime
+    verified DateTime
 
     role             UserRole          @default(USER)
     cart             Cart?
