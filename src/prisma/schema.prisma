@@ -1,154 +1,154 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    email    String   @unique
-    fullName String
-    password String
-    verified DateTime
+  email    String   @unique
+  fullName String
+  password String
+  verified DateTime
 
-    role             UserRole          @default(USER)
-    cart             Cart?
-    verificationCode VerificationCode?
-    orders           Order[]
-    createdAt        DateTime          @default(now())
-    updatedAt        DateTime          @updatedAt
+  role             UserRole          @default(USER)
+  cart             Cart?
+  verificationCode VerificationCode?
+  orders           Order[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model Cart {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    token       String
-    totalAmount Int    @default(0)
+  token       String
+  totalAmount Int    @default(0)
 
-    user   User @relation(fields: [userId], references: [id])
-    userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
 
-    products CartProduct[]
+  products CartProduct[]
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Product {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    name   String
-    imgUrl String
+  name   String
+  imgUrl String
 
-    category   Category @relation(fields: [categoryId], references: [id])
-    categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 
-    ingredients Ingredient[]
-    variations Variation[]
-    createdAt  DateTime     @default(now())
-    updatedAt  DateTime     @updatedAt
+  ingredients Ingredient[]
+  variations  Variation[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model CartProduct {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    quantity Int
+  quantity Int
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    variation   Variation    @relation(fields: [variationId], references: [id])
-    variationId Int
-    ingridients Ingredient[]
+  variation   Variation    @relation(fields: [variationId], references: [id])
+  variationId Int
+  ingridients Ingredient[]
 
-    cart   Cart @relation(fields: [cartId], references: [id])
-    cartId Int
+  cart   Cart @relation(fields: [cartId], references: [id])
+  cartId Int
 }
 
 model Category {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    name String
+  name String
 
-    product Product[]
+  product Product[]
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Ingredient {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    name   String
-    price  Int
-    imgUrl String
+  name   String
+  price  Int
+  imgUrl String
 
-    product     Product[]
-    cartProduct CartProduct[]
+  product     Product[]
+  cartProduct CartProduct[]
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Variation {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    price     Int
-    pizzaType Int?
-    size      Int?
+  price     Int
+  pizzaType Int?
+  size      Int?
 
-    createdAt    DateTime      @default(now())
-    updatedAt    DateTime      @updatedAt
-    cartProducts CartProduct[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  cartProducts CartProduct[]
 
-    product   Product @relation(fields: [productId], references: [id])
-    productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
 }
 
 model Order {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    fullName  String
-    address   String
-    email     String
-    phone     String
-    comment   String?
-    paymentId Int
-    products  Json
-    token     String
+  fullName  String
+  address   String
+  email     String
+  phone     String
+  comment   String?
+  paymentId Int
+  products  Json
+  token     String
 
-    status OrderStatus
+  status OrderStatus
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    User      User     @relation(fields: [userId], references: [id])
-    userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
+  userId    Int
 }
 
 model VerificationCode {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-    code String @unique
+  code String @unique
 
-    user   User @relation(fields: [userId], references: [id])
-    userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
 
-    createdAt DateTime @default(now())
+  createdAt DateTime @default(now())
 
-    @@unique([code, userId])
+  @@unique([code, userId])
 }
 
 enum UserRole {
-    ADMIN
-    USER
+  ADMIN
+  USER
 }
 
 enum OrderStatus {
-    PENDING
-    CANCELLED
-    SUCCESSFUL
+  PENDING
+  CANCELLED
+  SUCCESSFUL
 }

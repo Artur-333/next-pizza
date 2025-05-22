@@ -12,7 +12,6 @@ export default function Home() {
       <Container className="flex gap-10 ">
         <Filters className="max-w-[200px]" />
         <div className="grid gap-10">
-
           <Catalog
             categoryId={1}
             title={"Пицца"} items={[{

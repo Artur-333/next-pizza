@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { SearchIcon } from "lucide-react";
 import React from "react";
@@ -10,11 +10,11 @@ interface Props {
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
-  onFocus: () => void
+  onFocus: () => void;
 }
 
 export const Search: React.FC<Props> = (props) => {
-  const { className, placeholder, value, onChange,onFocus } = props;
+  const { className, placeholder, value, onChange, onFocus } = props;
   return (
     <label
       className={cn(
@@ -23,7 +23,13 @@ export const Search: React.FC<Props> = (props) => {
       )}
     >
       <SearchIcon size={16} className="text-gray-400" />
-      <Input className="border-0" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} onFocus={onFocus} />
+      <Input
+        className="border-0"
+        value={value}
+        onFocus={onFocus}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+      />
     </label>
   );
 };

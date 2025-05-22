@@ -1,9 +1,8 @@
 import React from "react";
-import { Logo } from "@/components";
+import { Logo, SearchHeader } from "@/components";
 import { ArrowRight, ShoppingCart, User } from "lucide-react";
 import { Button, Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { SearchHeader } from "./search-header";
 
 interface Props {
   className?: string;
@@ -15,7 +14,7 @@ export const Header: React.FC<Props> = (props) => {
     <header className={cn("py-2", className)}>
       <Container className="flex  gap-5 items-center justify-between">
         <Logo />
-        <SearchHeader/>
+        <SearchHeader />
         <div className="flex items-center gap-4">
           <Button variant="outline">
             <User />

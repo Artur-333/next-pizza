@@ -1,5 +1,4 @@
-
 export const ApiRoutes = {
-    PRODUCTSEARCH:"/products/search",
-
-}
+  PRODUCTSEARCH: "/products/search",
+  INGREDIENTS: "/ingredients",
+};
