@@ -99,6 +99,8 @@ async function create() {
       createVariant({ productId: 13 }),
       createVariant({ productId: 14 }),
       createVariant({ productId: 15 }),
+      createVariant({ productId: 16 }),
+      createVariant({ productId: 17 }),
     ],
   });
 }

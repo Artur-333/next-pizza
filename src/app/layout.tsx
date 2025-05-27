@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 
@@ -9,15 +8,12 @@ const nunito = Nunito({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Next Pizza",
-  description: "вкусней уже некуда",
-};
-
-export default function RootLayout({
+export default function Layout({
   children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -28,6 +24,7 @@ export default function RootLayout({
         className={nunito.className}
       >
         {children}
+        {modal}
       </body>
     </html>
   );
