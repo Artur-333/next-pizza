@@ -29,8 +29,8 @@ model Cart {
   token       String
   totalAmount Int    @default(0)
 
-  user   User @relation(fields: [userId], references: [id])
-  userId Int  @unique
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?  @unique
 
   products CartProduct[]
 
@@ -63,7 +63,7 @@ model CartProduct {
 
   variant   Variation    @relation(fields: [variantId], references: [id])
   variantId Int
-  ingridients Ingredient[]
+  ingredients Ingredient[]
 
   cart   Cart @relation(fields: [cartId], references: [id])
   cartId Int
@@ -88,7 +88,7 @@ model Ingredient {
   imgUrl String
 
   products     Product[]
-  cartProduct CartProduct[]
+  cartProducts CartProduct[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -150,5 +150,5 @@ enum UserRole {
 enum OrderStatus {
   PENDING
   CANCELLED
-  SUCCESSFUL
+  SUCCEEDED
 }

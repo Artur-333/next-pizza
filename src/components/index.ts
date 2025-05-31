@@ -1,4 +1,3 @@
-import { PizzaImage } from './pizza-image';
 export { Categories } from "./categories";
 export { TopBar } from "./top-bar";
 export { SortPopup } from "./sort-popup";
@@ -11,5 +10,7 @@ export { PriceSlider } from "./price-slider";
 export { FilterCheckboxGroup } from "./filter-checkbox-group";
 export { Card } from "./card";
 export { Catalog } from "./catalog";
-export {Modal} from './modal'
-export {PizzaImage} from './pizza-image'
+export { Modal } from './modal'
+export { PizzaImage } from './pizza-image'
+export { PizzaVariants } from './pizza-variants'
+export { IngredientItem } from './ingredient-item'
