@@ -10,7 +10,7 @@ export { PriceSlider } from "./price-slider";
 export { FilterCheckboxGroup } from "./filter-checkbox-group";
 export { Card } from "./card";
 export { Catalog } from "./catalog";
-export { Modal } from './modal'
-export { PizzaImage } from './pizza-image'
-export { PizzaVariants } from './pizza-variants'
-export { IngredientItem } from './ingredient-item'
+export { Modal } from "./modal";
+export { PizzaImage } from "./pizza-image";
+export { PizzaVariants } from "./pizza-variants";
+export { IngredientItem } from "./ingredient-item";

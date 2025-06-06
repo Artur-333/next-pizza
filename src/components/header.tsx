@@ -27,7 +27,6 @@ export const Header: React.FC<Props> = (props) => {
               <span className=" flex items-center gap-2 group-hover:opacity-0 transition-all">
                 <ShoppingCart />3
               </span>
-
               <span>
                 <ArrowRight className="w-5  absolute left-0 opacity-0 transition-all translate-x-[-50%] group-hover:opacity-100  group-hover:left-[50%]" />
               </span>

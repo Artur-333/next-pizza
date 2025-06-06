@@ -1,79 +1,36 @@
 "use client";
 import React from "react";
-import { Dialog, DialogContent, DialogTitle } from "./ui";
-import { useRouter } from "next/navigation";
+import { Button, Dialog, DialogContent, DialogTitle } from "./ui";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import { PizzaImage } from "./pizza-image";
 import { PizzaVariants } from "./pizza-variants";
+import { PizzaSizes, PizzaTypes, ProductRelation } from "@/@types/pizza";
 import { IngredientItem } from "./ingredient-item";
-import { ProductRelation } from "@/@types/pizza";
-import { useSet } from "react-use";
+import { pizzaSizes, pizzaTypes } from "@/constants/pizza";
+import { calcPizzaPrice } from "@/lib/calc-pizza-price";
+import { usePizzaOptions } from "@/hooks/pizza-options";
 
 interface Props {
   className?: string;
   product: ProductRelation;
 }
 
+
 export const Modal: React.FC<Props> = (props) => {
   const { className, product } = props;
   const router = useRouter();
-  console.log(product);
-  
 
-  const [selectedIngredients, {toggle:setSelectedIngredients}]= useSet(new Set<string>([])); 
+  const { size, type, setSize, setType, selectedIngredients, setSelectedIngredients, filteredPizzaBySize } = usePizzaOptions(product.variants)
 
+  const totalPrice = calcPizzaPrice(size, type, product.variants, product.ingredients, selectedIngredients)
   return (
     <Dialog open={!!product} onOpenChange={() => router.back()}>
       <DialogContent className={cn("flex lg:max-w-screen-xl", className)}>
-        <PizzaImage imgUrl={product.imgUrl} size={30} />
-
-        <div className="flex-1 gap-2 flex flex-col bg-gray-50">
+       
+        <div className="flex-1 flex-col gap-3">
           <DialogTitle>{product.name}</DialogTitle>
-          <PizzaVariants
-            variants={[
-              {
-                name: "маленькая",
-                value: "30",
-              },
-              {
-                name: "средняя",
-                value: "40",
-              },
-              {
-                name: "большая",
-                value: "50",
-              },
-            ]}
-            selectedValue={"30"}
-            setSelectedValue={() => {}}
-          />
-          <PizzaVariants
-            variants={[
-              {
-                name: "тонкая",
-                value: "1",
-              },
-              {
-                name: "традиционная",
-                value: "2",
-              },
-            ]}
-            selectedValue={"1"}
-            setSelectedValue={() => {}}
-          />
-          <div className="flex flex-wrap gap-3 p-3">
-            {product.ingredients.map((el) => (
-              <IngredientItem
-
-                key={el.id}
-                name={el.name}
-                price={el.price}
-                imgUrl={el.imgUrl}
-                onChecked={() => {setSelectedIngredients(el.id.toString())}}
-                checked={selectedIngredients.has(el.id.toString())}
-              />
-            ))}
-          </div>
+        
         </div>
       </DialogContent>
     </Dialog>

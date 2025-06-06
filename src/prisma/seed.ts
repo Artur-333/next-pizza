@@ -75,14 +75,21 @@ async function create() {
       createVariant({ size: 30, pizzaType: 1, productId: pizza1.id }),
       createVariant({ size: 40, pizzaType: 2, productId: pizza1.id }),
       createVariant({ size: 50, pizzaType: 1, productId: pizza1.id }),
+      createVariant({ size: 40, pizzaType: 1, productId: pizza1.id }),
+
 
       createVariant({ size: 30, pizzaType: 1, productId: pizza2.id }),
       createVariant({ size: 40, pizzaType: 2, productId: pizza2.id }),
       createVariant({ size: 50, pizzaType: 1, productId: pizza2.id }),
+      createVariant({ size: 40, pizzaType: 1, productId: pizza1.id }),
+
 
       createVariant({ size: 30, pizzaType: 1, productId: pizza3.id }),
+      createVariant({ size: 30, pizzaType: 2, productId: pizza3.id }),
       createVariant({ size: 40, pizzaType: 2, productId: pizza3.id }),
-      createVariant({ size: 50, pizzaType: 1, productId: pizza3.id }),
+      createVariant({ size: 50, pizzaType: 2, productId: pizza3.id }),
+      createVariant({ size: 50, pizzaType: 1, productId: pizza1.id }),
+
 
       createVariant({ productId: 1 }),
       createVariant({ productId: 2 }),
