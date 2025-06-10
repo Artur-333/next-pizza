@@ -17,12 +17,12 @@ export const IngredientItem: React.FC<Props> = (props) => {
     <button
       onClick={onChecked}
       className={cn(
-        "rounded-2xl max-w-[150px] p-3 bg-white inline-flex flex-col items-center",
+        "relative cursor-pointer min-h-[150px] rounded-2xl max-w-[150px] p-3 bg-white inline-flex flex-col items-center",
         checked && "outline-1 outline-primary",
         className
       )}
     >
-      {checked && <CheckCircle2 />}
+      {checked && <CheckCircle2 className="absolute top-2 right-2 text-primary" />}
       <img src={imgUrl} alt="" width={50} height={50} />
       <span>{name}</span>
       <span>{price}</span>

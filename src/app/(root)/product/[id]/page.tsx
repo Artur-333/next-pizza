@@ -1,5 +1,6 @@
+import { Product } from "@/components";
+import { Container } from "@/components/ui";
 import { prisma } from "@/prisma/prisma-client";
-import { notFound } from "next/navigation";
 
 export default async function ProductPage({
   params,
@@ -11,11 +12,15 @@ export default async function ProductPage({
     where: {
       id: +id,
     },
+    include: {
+      ingredients: true,
+      variants: true,
+    },
   });
 
   if (!product) {
     notFound();
   }
-
-  return <h1>{product.name}</h1>;
+  
+  return <Container><Product product={product} /></Container>
 }

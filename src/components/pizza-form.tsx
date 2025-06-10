@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { PizzaImage } from './pizza-image';
@@ -6,20 +7,21 @@ import { pizzaTypes } from '@/constants/pizza';
 import { IngredientItem } from './ingredient-item';
 import { PizzaSizes, PizzaTypes } from '@/@types/pizza';
 import { Ingredient, Variation } from '@prisma/client';
-import { Button } from './ui';
+import { Button, Title } from './ui';
 import { usePizzaOptions } from '@/hooks/pizza-options';
+import { calcPizzaPrice } from '@/lib/calc-pizza-price';
 
 interface Props {
+    name: string;
     className?: string;
     imgUrl: string;
-    price: number;
     ingredients: Ingredient[];
     variants: Variation[];
 }
 
 export const PizzaForm: React.FC<Props> = (props) => {
 
-    const { className, variants, imgUrl, price, ingredients } = props;
+    const { className, variants, imgUrl,  ingredients,name } = props;
 
 
     const {
@@ -31,10 +33,13 @@ export const PizzaForm: React.FC<Props> = (props) => {
         setSelectedIngredients,
         filteredPizzaBySize } = usePizzaOptions(variants);
 
+        const price = calcPizzaPrice(size,type,variants,ingredients,selectedIngredients)
+
     return (
-        <div className={cn("", className)}>
-            <PizzaImage imgUrl={imgUrl} size={size} />
+        <div className={cn("flex  gap-10", className)}>
+            <PizzaImage className="shrink-0" imgUrl={imgUrl} size={size} />
             <div>
+                <Title size={"m"} text={name} />
                 <PizzaVariants
                     className="mt-3"
                     variants={filteredPizzaBySize}
@@ -51,7 +56,7 @@ export const PizzaForm: React.FC<Props> = (props) => {
                         setType(+value as PizzaTypes);
                     }}
                 />
-                <div>
+                <div className="flex flex-wrap gap-5 my-5">
                     {ingredients.map((el) => (
                         <IngredientItem
                             key={el.id}

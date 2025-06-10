@@ -14,3 +14,8 @@ export { Modal } from "./modal";
 export { PizzaImage } from "./pizza-image";
 export { PizzaVariants } from "./pizza-variants";
 export { IngredientItem } from "./ingredient-item";
+export { Product } from "./product";
+export { ProductForm } from "./product-form";
+export { PizzaForm } from "./pizza-form";
+export { BasketButton } from "./basket-button";
+export { Basket } from "./basket";

@@ -1,3 +1,4 @@
+
 import { categories, ingredients, products } from "./constants";
 import { prisma } from "./prisma-client";
 
@@ -110,6 +111,28 @@ async function create() {
       createVariant({ productId: 17 }),
     ],
   });
+
+
+  await prisma.cart.create({
+    data: {
+      token: "12345",
+      totalAmount: 1000,
+      id: 1,
+    
+    }
+  })
+
+  await prisma.cartProduct.create({
+    data: {
+      quantity: 2,
+      variantId: 1,
+      ingredients: {connect: [{id: 1}, {id: 2}, {id: 3}]},
+      cartId: 1,
+    }
+  })
+
+
+
 }
 async function reset() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
@@ -117,6 +140,8 @@ async function reset() {
   await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Variation" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "CartProduct" RESTART IDENTITY CASCADE`;
 }
 async function main() {
   try {
