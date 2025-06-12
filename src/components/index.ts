@@ -19,3 +19,5 @@ export { ProductForm } from "./product-form";
 export { PizzaForm } from "./pizza-form";
 export { BasketButton } from "./basket-button";
 export { Basket } from "./basket";
+export { BasketCart } from "./basket-cart";
+export { CountButton } from "./count-button";

@@ -21,7 +21,11 @@ export async function GET(req: NextRequest) {
             products: {
                 include: {
                     ingredients: true,
-                    variant: true,
+                    variant: {
+                        include: {
+                            product: true
+                        }
+                    }
                 }
             }
         }
