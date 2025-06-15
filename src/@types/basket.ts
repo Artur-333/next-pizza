@@ -6,3 +6,5 @@ export type BasketCartDTO = CartProduct & {
     ingredients: Ingredient[]   
 }
 export type BasketDTO = Cart & {products: BasketCartDTO[]}
+
+// export type CreateBasketCardValues = {}
